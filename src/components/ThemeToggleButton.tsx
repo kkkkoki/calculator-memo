@@ -20,7 +20,7 @@ const ThemeToggleButton = () => {
     <Around
       onToggle={() => setTheme(isDark ? "light" : "dark")}
       toggled={isDark}
-      className="text-5xl"
+      className="text-[40px]"
       duration={750}
     />
   );
