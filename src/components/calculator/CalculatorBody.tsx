@@ -11,7 +11,7 @@ const CalculatorBody = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center max-w-xs p-6 rounded-lg bg-orange-200 dark:bg-gray-800">
+    <div className="flex flex-col items-center max-w-xs p-6 rounded-lg shadow-lg bg-opacity-40 bg-orange-200 dark:bg-gray-800">
       <form className="mb-4">
         <Input />
       </form>
