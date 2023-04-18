@@ -11,4 +11,10 @@
   body {
     @apply bg-bgc-light dark:bg-bgc-dark text-text-color-light dark:text-text-color-dark;
   }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }

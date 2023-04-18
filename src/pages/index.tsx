@@ -2,6 +2,7 @@ import { ReactElement } from 'react';
 import Head from 'next/head';
 import { NextPageWithLayout } from './_app';
 import Layout from '@/components/base/Layout';
+import CalculatorBody from '@/components/calculator/CalculatorBody';
 
 const Home: NextPageWithLayout = () => {
   return (
@@ -16,8 +17,8 @@ const Home: NextPageWithLayout = () => {
         />
       </Head>
 
-      <div>
-        <div>Hello World</div>
+      <div className="flex items-center justify-center w-full h-full">
+        <CalculatorBody />
       </div>
     </>
   );
