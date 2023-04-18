@@ -20,7 +20,7 @@ const ThemeToggleButton = () => {
     <Around
       onToggle={() => setTheme(isDark ? 'light' : 'dark')}
       toggled={isDark}
-      className="text-[40px]"
+      className="text-[40px] hover:-rotate-45 dark:hover:-rotate-12 transition-all duration-300"
       duration={750}
     />
   );
