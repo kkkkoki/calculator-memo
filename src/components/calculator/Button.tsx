@@ -13,14 +13,16 @@ const Button: FC<ButtonProps> = ({ value, mode }) => {
   return (
     <button
       className={`
-      inline-flex items-center justify-center w-14 h-14 rounded-full transition-all duration-300 outline-none text-2xl font-bold shadow-md
+      inline-flex items-center justify-center w-14 h-14 rounded-full transition-all outline-none text-2xl font-bold shadow-md
       hover:bg-opacity-80 dark:hover:bg-opacity-75 hover:shadow-none
       focus:outline-slate-400
       ${bgColor} ${equalStyle}
       `}
       type="button"
     >
-      <span className={`${mode === 'symbol' && '-translate-y-0.5'}`}>
+      <span
+        className={`select-none ${mode === 'symbol' && '-translate-y-0.5'}`}
+      >
         {value}
       </span>
     </button>
