@@ -21,31 +21,27 @@ const Footer = () => {
     <footer className="flex items-center justify-center space-y-4 flex-col">
       <h2 className="text-base font-semibold">CLMEMO</h2>
       <div className="flex items-center space-x-4">
-        <a
-          className="block w-10 h-10"
-          href="https://github.com/kkkkoki"
-          target="_blank"
-        >
+        <a className="block" href="https://github.com/kkkkoki" target="_blank">
           <Image
-            className="w-auto h-auto"
+            className="w-[40px] h-auto"
             src={`${isDark ? 'github-white' : 'github'}.svg`}
             alt="GitHub"
-            width={40}
-            height={40}
+            width="0"
+            height="0"
             priority
           />
         </a>
         <a
-          className="flex items-center w-10 h-10"
+          className="flex items-center"
           href="https://twitter.com/tonamaru4"
           target="_blank"
         >
           <Image
-            className="w-auto h-auto"
+            className="w-[40px] h-auto"
             src={`${isDark ? 'twitter-white' : 'twitter'}.svg`}
             alt="Twitter"
-            width={40}
-            height={40}
+            width="0"
+            height="0"
             priority
           />
         </a>
