@@ -9,7 +9,7 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 const Button: FC<ButtonProps> = ({ value, mode, active, ...props }) => {
   const bgColor =
     mode === 'num' ? 'bg-gray-400 dark:bg-gray-600' : 'bg-orange-400';
-  const equalStyle = value === '=' && 'col-span-2 w-full';
+  const equalStyle = value === 'AC' && 'col-span-2 w-full';
   const symbolAcive = active && 'outline-slate-400';
 
   return (
