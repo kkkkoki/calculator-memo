@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
-interface ButtonProps {
+interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   value: number | string;
   mode: 'num' | 'symbol';
   active?: boolean;
 }
 
-const Button: FC<ButtonProps> = ({ value, mode, active }) => {
+const Button: FC<ButtonProps> = ({ value, mode, active, ...props }) => {
   const bgColor =
     mode === 'num' ? 'bg-gray-400 dark:bg-gray-600' : 'bg-orange-400';
   const equalStyle = value === '=' && 'col-span-2 w-full';
@@ -21,6 +21,7 @@ const Button: FC<ButtonProps> = ({ value, mode, active }) => {
       ${bgColor} ${equalStyle} ${symbolAcive}
       `}
       type="button"
+      {...props}
     >
       <span
         className={`select-none ${mode === 'symbol' && '-translate-y-0.5'}`}
