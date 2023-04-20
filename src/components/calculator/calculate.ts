@@ -24,10 +24,8 @@ export const calculate = (
         return handleDot(state);
       case 'AC':
         return handleAllClear();
-      // "%"の処理を後に実装
       case '%':
-        alert('%');
-        return state;
+        return handlePercent(state);
       default:
         return handleOperator(value, state);
     }
@@ -68,6 +66,17 @@ const handleOperator = (
     current: `${nextValue}`,
     operand: nextValue,
     operator: value,
+    isNextClear: true,
+  };
+};
+
+const handlePercent = (state: CalculateState): CalculateState => {
+  const current = parseFloat(state.current);
+
+  return {
+    current: `${current / 100}`,
+    operand: state.operand,
+    operator: state.operator,
     isNextClear: true,
   };
 };
