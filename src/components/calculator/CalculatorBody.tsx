@@ -41,7 +41,7 @@ const CalculatorBody = () => {
           <Button
             key={val}
             val={val}
-            mode={isNumber(val) ? 'num' : 'symbol'}
+            color={isNumber(val) ? 'num' : 'symbol'}
             onClick={() => handle(val)}
           />
         ))}
