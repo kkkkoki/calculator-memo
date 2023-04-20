@@ -1,16 +1,19 @@
-export interface State {
-  current: string;
-  operand: number;
-  operator: string | null;
-  isNextClear: boolean;
-}
+import {
+  ButtonCode,
+  CalculateState,
+  NumberCode,
+  Operator,
+} from '@/types/calculate';
 
-export const isNumber = (val: string) => {
+export const isNumber = (val: ButtonCode): val is NumberCode => {
   const numRegex = /[0-9]/;
   return numRegex.test(val);
 };
 
-export const calculate = (value: string, state: State): State => {
+export const calculate = (
+  value: ButtonCode,
+  state: CalculateState
+): CalculateState => {
   if (isNumber(value)) {
     return handleNumber(value, state);
   } else {
@@ -21,13 +24,20 @@ export const calculate = (value: string, state: State): State => {
         return handleDot(state);
       case 'AC':
         return handleAllClear();
+      // "%"の処理を後に実装
+      case '%':
+        alert('%');
+        return state;
       default:
         return handleOperator(value, state);
     }
   }
 };
 
-const handleNumber = (value: string, state: State): State => {
+const handleNumber = (
+  value: NumberCode,
+  state: CalculateState
+): CalculateState => {
   return {
     // currentが0 or state.isNextClear(operator押下)の時はvalueを返す
     current:
@@ -40,7 +50,10 @@ const handleNumber = (value: string, state: State): State => {
   };
 };
 
-const handleOperator = (value: string, state: State): State => {
+const handleOperator = (
+  value: Operator,
+  state: CalculateState
+): CalculateState => {
   if (state.operator === null) {
     return {
       current: state.current,
@@ -59,7 +72,7 @@ const handleOperator = (value: string, state: State): State => {
   };
 };
 
-const handleDot = (state: State): State => {
+const handleDot = (state: CalculateState): CalculateState => {
   if (state.current.indexOf('.') !== -1) {
     return state;
   }
@@ -73,7 +86,7 @@ const handleDot = (state: State): State => {
 };
 
 // "C"で今のstateをクリアする
-// const handleClear = (state: State): State => {
+// const handleClear = (state: CalculateState): CalculateState => {
 //   return {
 //     current: '0',
 //     operand: state.operand,
@@ -82,7 +95,7 @@ const handleDot = (state: State): State => {
 //   };
 // };
 
-const handleAllClear = (): State => {
+const handleAllClear = (): CalculateState => {
   return {
     current: '0',
     operand: 0,
@@ -92,7 +105,7 @@ const handleAllClear = (): State => {
 };
 
 // "D"で1文字削除(既に1文字なら0にする)
-// const handleDelete = (state: State): State => {
+// const handleDelete = (state: CalculateState): CalculateState => {
 //   return {
 //     current:
 //       state.current.length === 1
@@ -104,7 +117,7 @@ const handleAllClear = (): State => {
 //   };
 // };
 
-const hadleEqual = (state: State): State => {
+const hadleEqual = (state: CalculateState): CalculateState => {
   if (state.operator === null) {
     return state;
   }
@@ -118,7 +131,7 @@ const hadleEqual = (state: State): State => {
   };
 };
 
-const operate = (state: State): number => {
+const operate = (state: CalculateState): number => {
   const current = parseFloat(state.current);
 
   switch (state.operator) {

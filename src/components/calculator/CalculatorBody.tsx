@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import Input from '../ui/Input/Input';
 import Button from './Button';
-import { State, calculate, isNumber } from './calculate';
+import { calculate, isNumber } from './calculate';
+import { ButtonCode, CalculateState } from '@/types/calculate';
 
-const btnValues = [
+const btnValues: ButtonCode[][] = [
   ['AC', '%', '/'],
   ['7', '8', '9', '×'],
   ['4', '5', '6', '-'],
@@ -12,14 +13,14 @@ const btnValues = [
 ];
 
 const CalculatorBody = () => {
-  const [state, setState] = useState<State>({
+  const [state, setState] = useState<CalculateState>({
     current: '0',
     operand: 0,
     operator: null,
     isNextClear: false,
   });
 
-  const handle = (val: string) => {
+  const handle = (val: ButtonCode) => {
     const nextState = calculate(val, state);
     setState(nextState);
   };
@@ -39,7 +40,7 @@ const CalculatorBody = () => {
         {btnValues.flat().map((val) => (
           <Button
             key={val}
-            value={val}
+            val={val}
             mode={isNumber(val) ? 'num' : 'symbol'}
             onClick={() => handle(val)}
           />
