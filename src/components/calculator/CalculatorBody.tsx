@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import Input from '../ui/Input/Input';
 import Button from './Button';
 import { calculate, isNumber } from './calculate';
@@ -13,6 +14,11 @@ const btnValues: ButtonCode[][] = [
 ];
 
 const CalculatorBody = () => {
+  const { register, setValue } = useForm({
+    defaultValues: {
+      calculator: '0',
+    },
+  });
   const [state, setState] = useState<CalculateState>({
     current: '0',
     operand: 0,
@@ -23,17 +29,22 @@ const CalculatorBody = () => {
   const handle = (val: ButtonCode) => {
     const nextState = calculate(val, state);
     setState(nextState);
+
+    const commaValue = nextState.current.replace(
+      /(\d)(?=(\d\d\d)+(?!\d))/g,
+      '$1,'
+    );
+    setValue('calculator', commaValue);
   };
 
   return (
     <div className="flex flex-col items-center max-w-xs p-6 rounded-lg shadow-lg bg-opacity-40 bg-orange-200 dark:bg-gray-800">
-      {/* <form className="mb-4">
-        <Input />
-      </form> */}
-      <div className="w-full bg-white dark:bg-gray-600 p-2 rounded-md mb-4">
-        <p className="text-right text-5xl -mt-1">
-          {state.current === 'NaN' ? 'エラー' : state.current}
-        </p>
+      <div className="mb-4">
+        <input
+          {...register('calculator')}
+          className="w-full p-2 rounded-lg text-4xl text-right shadow-sm outline-none outline-2 caret-slate-400 focus:outline-slate-400"
+          type="text"
+        />
       </div>
 
       <div className="inline-grid grid-cols-4 gap-3 ">
