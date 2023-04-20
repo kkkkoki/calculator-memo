@@ -36,12 +36,22 @@ const handleNumber = (
   value: NumberCode,
   state: CalculateState
 ): CalculateState => {
+  const isCurrentZero = state.current === '0';
+  const isDoubleZero = value === '00';
+  // valueが"00"の例外処理
+  if (
+    isDoubleZero &&
+    (isCurrentZero || state.current === `${state.operand}` || state.isNextClear)
+  ) {
+    return {
+      ...state,
+      current: '0',
+    };
+  }
+
   return {
     // currentが0 or state.isNextClear(operator押下)の時はvalueを返す
-    current:
-      state.current === '0' || state.isNextClear
-        ? value
-        : state.current + value,
+    current: isCurrentZero || state.isNextClear ? value : state.current + value,
     operand: state.operand,
     operator: state.operator,
     isNextClear: false,
