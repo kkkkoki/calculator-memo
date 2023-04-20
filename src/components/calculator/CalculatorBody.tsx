@@ -24,6 +24,7 @@ const CalculatorBody = () => {
     const nextState = calculate(val, state);
     setState(nextState);
   };
+  console.log(state.current);
 
   return (
     <div className="flex flex-col items-center max-w-xs p-6 rounded-lg shadow-lg bg-opacity-40 bg-orange-200 dark:bg-gray-800">
@@ -32,7 +33,7 @@ const CalculatorBody = () => {
       </form> */}
       <div className="w-full bg-white dark:bg-gray-600 p-2 rounded-md mb-4">
         <p className="text-right text-5xl -mt-1">
-          {Number.isNaN(state.current) ? 'エラー' : state.current}
+          {state.current === 'NaN' ? 'エラー' : state.current}
         </p>
       </div>
 
