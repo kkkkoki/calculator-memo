@@ -18,6 +18,6 @@ export type NumberCode =
   | '9'
   | '00';
 
-export type Operator = '+' | '-' | '×' | '/';
+export type Operator = '+' | '-' | '×' | '÷';
 
 export type ButtonCode = NumberCode | Operator | '=' | '.' | 'AC' | '%' | '+-';

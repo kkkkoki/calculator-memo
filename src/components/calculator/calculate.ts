@@ -172,7 +172,7 @@ const operate = (state: CalculateState): number => {
       return state.operand - current;
     case '×':
       return state.operand * current;
-    case '/':
+    case '÷':
       return state.operand / current;
     default:
       break;

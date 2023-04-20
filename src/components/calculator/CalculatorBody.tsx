@@ -5,7 +5,7 @@ import { calculate, isNumber } from './calculate';
 import { ButtonCode, CalculateState } from '@/types/calculate';
 
 const btnValues: ButtonCode[][] = [
-  ['AC', '+-', '%', '/'],
+  ['AC', '+-', '%', '÷'],
   ['7', '8', '9', '×'],
   ['4', '5', '6', '-'],
   ['1', '2', '3', '+'],
