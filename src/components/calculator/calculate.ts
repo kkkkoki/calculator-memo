@@ -26,6 +26,8 @@ export const calculate = (
         return handleAllClear();
       case '%':
         return handlePercent(state);
+      case '+-':
+        return handleSignChange(state);
       default:
         return handleOperator(value, state);
     }
@@ -77,6 +79,16 @@ const handleOperator = (
     operand: nextValue,
     operator: value,
     isNextClear: true,
+  };
+};
+
+const handleSignChange = (state: CalculateState): CalculateState => {
+  const current = parseFloat(state.current);
+  return {
+    current: `${-current}`,
+    operand: state.operand,
+    operator: state.operator,
+    isNextClear: false,
   };
 };
 

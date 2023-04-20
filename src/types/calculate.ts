@@ -20,4 +20,4 @@ export type NumberCode =
 
 export type Operator = '+' | '-' | '×' | '/';
 
-export type ButtonCode = NumberCode | Operator | '=' | '.' | 'AC' | '%';
+export type ButtonCode = NumberCode | Operator | '=' | '.' | 'AC' | '%' | '+-';
