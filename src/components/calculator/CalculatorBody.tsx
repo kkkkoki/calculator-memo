@@ -14,7 +14,7 @@ const btnValues: ButtonCode[][] = [
 ];
 
 const CalculatorBody = () => {
-  const { register, setValue } = useForm({
+  const { register, setValue, getValues } = useForm({
     defaultValues: {
       calculator: '0',
     },
@@ -26,14 +26,21 @@ const CalculatorBody = () => {
     isNextClear: false,
   });
 
-  const handle = (val: ButtonCode) => {
-    const nextState = calculate(val, state);
+  const handle = (val?: ButtonCode) => {
+    // as assertionはzodでschema作ったら修正
+    const inputValue = getValues('calculator') as ButtonCode;
+    const commaRegex = /(\d)(?=(\d\d\d)+(?!\d))/g;
+    const isInputValueChange =
+      state.current.replace(commaRegex, '$1,') === inputValue;
+    if (!val && isInputValueChange) {
+      return null;
+    }
+
+    const calculateValue = val ? val : inputValue;
+    const nextState = calculate(calculateValue, state);
     setState(nextState);
 
-    const commaValue = nextState.current.replace(
-      /(\d)(?=(\d\d\d)+(?!\d))/g,
-      '$1,'
-    );
+    const commaValue = nextState.current.replace(commaRegex, '$1,');
     setValue('calculator', commaValue);
   };
 
@@ -44,6 +51,10 @@ const CalculatorBody = () => {
           {...register('calculator')}
           className="w-full p-2 rounded-lg text-4xl text-right shadow-sm outline-none outline-2 caret-slate-400 focus:outline-slate-400"
           type="text"
+          // button押下後、blurしたら値がバグる。判定が甘いのでblurをやめるなど根本的に別の実装の方がいいかも
+          onBlur={() => {
+            handle();
+          }}
         />
       </div>
 
