@@ -26,8 +26,6 @@ const CalculatorBody = () => {
   });
 
   const handle = (val?: ButtonCode) => {
-    console.log(state);
-
     // as assertionはzodでschema作ったら修正
     const inputValue = getValues('calculator').replace(/,/g, '') as ButtonCode;
     const commaRegex = /(\d)(?=(\d\d\d)+(?!\d))/g;
