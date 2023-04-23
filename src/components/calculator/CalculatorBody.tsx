@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Input from '../ui/Input/Input';
 import Button from './Button';
 import { calculate, isNumber } from './calculate';
 import { ButtonCode, CalculateState } from '@/types/calculate';
@@ -27,12 +26,12 @@ const CalculatorBody = () => {
   });
 
   const handle = (val?: ButtonCode) => {
+    console.log(state);
+
     // as assertionはzodでschema作ったら修正
-    const inputValue = getValues('calculator') as ButtonCode;
+    const inputValue = getValues('calculator').replace(/,/g, '') as ButtonCode;
     const commaRegex = /(\d)(?=(\d\d\d)+(?!\d))/g;
-    const isInputValueChange =
-      state.current.replace(commaRegex, '$1,') === inputValue;
-    if (!val && isInputValueChange) {
+    if (!val && state.current === inputValue) {
       return null;
     }
 
@@ -51,10 +50,16 @@ const CalculatorBody = () => {
           {...register('calculator')}
           className="w-full p-2 rounded-lg text-4xl text-right shadow-sm outline-none outline-2 caret-slate-400 focus:outline-slate-400"
           type="text"
-          // button押下後、blurしたら値がバグる。判定が甘いのでblurをやめるなど根本的に別の実装の方がいいかも
           onBlur={() => {
             handle();
           }}
+          onFocus={(e) => e.currentTarget.select()}
+          onPaste={() =>
+            setState({
+              ...state,
+              current: '0',
+            })
+          }
         />
       </div>
 
