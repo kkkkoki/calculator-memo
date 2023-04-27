@@ -14,14 +14,17 @@ const Header: FC<HeaderProps> = ({ direction, setDirection }) => {
       <Link href="/">
         <h1 className="text-xl font-bold">CLMEMO</h1>
       </Link>
-      <ThemeToggleButton />
-      <button onClick={setDirection}>
-        <ArrowsRightLeftIcon
-          className={`w-6 h-6 ${
+      <div className="flex items-center gap-2">
+        <ThemeToggleButton />
+        <button
+          className={`w-9 h-9 ${
             direction === 'LTR' && 'rotate-180'
           } transition-all duration-300`}
-        />
-      </button>
+          onClick={setDirection}
+        >
+          <ArrowsRightLeftIcon />
+        </button>
+      </div>
     </header>
   );
 };
