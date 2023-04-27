@@ -31,11 +31,11 @@ const Layout = ({ children }: { children: ReactNode }) => {
         }`}
       >
         <div className="w-40 text-center">
-          <p>hello</p>
+          <p>hello world</p>
         </div>
         <main className="flex items-center my-16 flex-1">{children}</main>
         <div className="w-40 text-center">
-          <p>world</p>
+          <p></p>
         </div>
       </div>
       <Footer />
