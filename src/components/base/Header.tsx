@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import Link from 'next/link';
 import { ArrowsRightLeftIcon } from '@heroicons/react/24/solid';
 import ThemeToggleButton from '../ThemeToggleButton';
@@ -8,7 +8,7 @@ type HeaderProps = {
   setDirection: VoidFunction;
 };
 
-const Header: React.FC<HeaderProps> = ({ direction, setDirection }) => {
+const Header: FC<HeaderProps> = ({ direction, setDirection }) => {
   return (
     <header className="flex items-center justify-between h-16">
       <Link href="/">
@@ -16,7 +16,11 @@ const Header: React.FC<HeaderProps> = ({ direction, setDirection }) => {
       </Link>
       <ThemeToggleButton />
       <button onClick={setDirection}>
-        <ArrowsRightLeftIcon className={`w-6 h-6`} />
+        <ArrowsRightLeftIcon
+          className={`w-6 h-6 ${
+            direction === 'LTR' && 'rotate-180'
+          } transition-all duration-300`}
+        />
       </button>
     </header>
   );
