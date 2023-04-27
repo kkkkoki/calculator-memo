@@ -6,6 +6,7 @@ import { LayoutDirectionType } from '@/types/layoutDirection';
 const Layout = ({ children }: { children: ReactNode }) => {
   const [direction, setDirection] = useState<LayoutDirectionType | null>(null);
   const [isRendered, setIsRendered] = useState(false);
+  const isLTR = direction === 'LTR';
 
   useEffect(() => {
     setIsRendered(true);
@@ -23,20 +24,18 @@ const Layout = ({ children }: { children: ReactNode }) => {
     <div className="container flex flex-col min-h-screen">
       <Header
         direction={direction}
-        setDirection={() => setDirection(direction === 'LTR' ? 'RTL' : 'LTR')}
+        setDirection={() => setDirection(isLTR ? 'RTL' : 'LTR')}
       />
       <div
         className={`flex flex-1 items-center ${
-          direction === 'LTR' ? 'flex-row' : 'flex-row-reverse'
+          isLTR ? 'flex-row' : 'flex-row-reverse'
         }`}
       >
-        <div className="w-40 text-center">
+        <div className={`w-40 text-center`}>
           <p>hello world</p>
         </div>
         <main className="flex items-center my-16 flex-1">{children}</main>
-        <div className="w-40 text-center">
-          <p></p>
-        </div>
+        <span className={`w-40`}></span>
       </div>
       <Footer />
     </div>
