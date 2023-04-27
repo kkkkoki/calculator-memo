@@ -19,7 +19,7 @@ const Header: FC<HeaderProps> = ({ direction, setDirection }) => {
         <button
           className={`w-9 h-9 ${
             direction === 'LTR' && 'rotate-180'
-          } transition-all duration-300`}
+          } transition-all duration-300 hover:scale-110`}
           onClick={setDirection}
         >
           <ArrowsRightLeftIcon />
