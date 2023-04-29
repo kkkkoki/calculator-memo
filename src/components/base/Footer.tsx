@@ -36,7 +36,7 @@ const Footer = () => {
       <div className="flex items-center space-x-4">
         {mounted ? (
           SOCIAL_LINKS.map((social) => (
-            <>
+            <React.Fragment key={social.alt}>
               <a
                 className="flex items-center"
                 href={social.url}
@@ -51,7 +51,7 @@ const Footer = () => {
                   priority
                 />
               </a>
-            </>
+            </React.Fragment>
           ))
         ) : (
           <div className="w-10 h-10"></div>
