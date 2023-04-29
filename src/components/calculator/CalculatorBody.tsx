@@ -83,8 +83,11 @@ const CalculatorBody = () => {
           <Button
             key={val}
             val={val}
-            color={isNumber(val) ? 'num' : 'symbol'}
             onClick={() => handle(val)}
+            buttonVariants={{
+              color: isNumber(val) ? 'num' : 'symbol',
+            }}
+            buttonValueVariants={{ symbol: !isNumber(val) && true }}
           />
         ))}
       </div>
