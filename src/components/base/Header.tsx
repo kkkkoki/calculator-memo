@@ -15,7 +15,6 @@ const Header: FC<HeaderProps> = ({ direction, setDirection }) => {
         <h1 className="text-xl font-bold">CLMEMO</h1>
       </Link>
       <div className="flex items-center gap-2">
-        <ThemeToggleButton />
         <button
           className={`w-9 h-9 ${
             direction === 'LTR' && 'rotate-180'
@@ -24,6 +23,7 @@ const Header: FC<HeaderProps> = ({ direction, setDirection }) => {
         >
           <ArrowsRightLeftIcon />
         </button>
+        <ThemeToggleButton />
       </div>
     </header>
   );
