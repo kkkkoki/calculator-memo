@@ -20,6 +20,7 @@ const Header: FC<HeaderProps> = ({ direction, setDirection }) => {
             direction === 'LTR' && 'rotate-180'
           } transition-all duration-300 hover:scale-110`}
           onClick={setDirection}
+          aria-label="レイアウトを変更する"
         >
           <ArrowsRightLeftIcon />
         </button>

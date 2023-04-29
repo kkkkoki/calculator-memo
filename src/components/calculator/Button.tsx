@@ -9,7 +9,9 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 
 const Button: FC<ButtonProps> = ({ val, color, isLarge, ...props }) => {
   const bgColor =
-    color === 'num' ? 'bg-gray-400 dark:bg-gray-600' : 'bg-orange-400';
+    color === 'num'
+      ? 'bg-gray-400 dark:bg-gray-600'
+      : 'bg-orange-400 dark:bg-orange-600';
   const largeStyle = isLarge && 'col-span-2 w-full';
 
   return (

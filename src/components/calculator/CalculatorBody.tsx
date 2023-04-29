@@ -48,6 +48,7 @@ const CalculatorBody = () => {
           {...register('calculator')}
           className="w-full p-2 rounded-lg text-4xl text-right shadow-sm outline-none outline-2 caret-slate-400 focus:outline-slate-400"
           type="text"
+          aria-label="計算結果"
           onBlur={() => {
             handle();
           }}

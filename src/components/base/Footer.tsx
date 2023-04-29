@@ -57,7 +57,7 @@ const Footer = () => {
           <div className="w-10 h-10"></div>
         )}
       </div>
-      <span className="text-sm opacity-40 pb-4">
+      <span className="text-sm opacity-70 pb-4">
         &copy; {startYear !== year && `${startYear} - `}
         {year} kkkkoki. All Rights Reserved.
       </span>
