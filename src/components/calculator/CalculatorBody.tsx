@@ -31,6 +31,13 @@ const CalculatorBody = () => {
     const commaRegex = /(\d)(?=(\d\d\d)+(?!\d))/g;
     if (!val && state.current === inputValue) {
       return null;
+    } else if (inputValue.length === 0) {
+      setState({
+        ...state,
+        current: '0',
+      });
+      setValue('calculator', '0');
+      return null;
     }
 
     const calculateValue = val ? val : inputValue;
