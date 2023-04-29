@@ -10,12 +10,12 @@ const header = tv({
     logo: 'text-xl font-bold',
     actions: 'flex items-center gap-2',
     directionBtn:
-      'w-9 h-9 rotate-0 transition-all duration-300 hover:scale-110',
+      'w-9 h-9 rotate-180 transition-all duration-300 hover:scale-110',
   },
   variants: {
     directionBtn: {
       true: {
-        directionBtn: 'rotate-180',
+        directionBtn: 'rotate-0',
       },
     },
   },
