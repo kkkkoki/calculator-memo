@@ -1,8 +1,21 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { tv } from 'tailwind-variants';
 import Button from './Button';
 import { calculate, isNumber } from './calculate';
 import { ButtonCode, CalculateState } from '@/types/calculate';
+
+const calculatorBody = tv({
+  base: 'flex flex-col items-center max-w-xs p-6 rounded-lg shadow-lg bg-opacity-40 bg-orange-200 dark:bg-gray-800',
+});
+
+const displayInput = tv({
+  base: 'w-full p-2 mb-4 rounded-lg text-4xl text-right shadow-sm outline-none outline-2 caret-slate-400 focus:outline-slate-400',
+});
+
+const buttonGroup = tv({
+  base: 'inline-grid grid-cols-4 gap-3',
+});
 
 const btnValues: ButtonCode[][] = [
   ['AC', '+-', '%', '÷'],
@@ -42,7 +55,6 @@ const CalculatorBody = () => {
 
     const calculateValue = val ? val : inputValue;
     const nextState = calculate(calculateValue, state);
-    console.log(nextState);
 
     setState(nextState);
 
@@ -51,34 +63,32 @@ const CalculatorBody = () => {
   };
 
   return (
-    <div className="flex flex-col items-center max-w-xs p-6 rounded-lg shadow-lg bg-opacity-40 bg-orange-200 dark:bg-gray-800">
-      <div className="mb-4">
-        <input
-          {...register('calculator')}
-          className="w-full p-2 rounded-lg text-4xl text-right shadow-sm outline-none outline-2 caret-slate-400 focus:outline-slate-400"
-          type="text"
-          aria-label="計算結果"
-          onBlur={() => {
-            handle();
-          }}
-          onFocus={(e) => e.currentTarget.select()}
-          onPaste={() =>
-            setState({
-              ...state,
-              current: '0',
-            })
-          }
-          onChange={(e) => {
-            setState({
-              ...state,
-              current: '0',
-            });
-            setValue('calculator', e.target.value);
-          }}
-        />
-      </div>
+    <div className={calculatorBody()}>
+      <input
+        {...register('calculator')}
+        className={displayInput()}
+        type="text"
+        aria-label="計算結果"
+        onBlur={() => {
+          handle();
+        }}
+        onFocus={(e) => e.currentTarget.select()}
+        onPaste={() =>
+          setState({
+            ...state,
+            current: '0',
+          })
+        }
+        onChange={(e) => {
+          setState({
+            ...state,
+            current: '0',
+          });
+          setValue('calculator', e.target.value);
+        }}
+      />
 
-      <div className="inline-grid grid-cols-4 gap-3 ">
+      <div className={buttonGroup()}>
         {btnValues.flat().map((val) => (
           <Button
             key={val}
