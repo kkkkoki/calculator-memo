@@ -1,6 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
+import { VariantProps, tv } from 'tailwind-variants';
+
+const footer = tv({
+  slots: {
+    root: 'flex items-center justify-center space-y-4 flex-col',
+    logo: 'text-base font-semibold',
+    links: 'flex items-center space-x-4',
+    sosialLink: 'flex items-center',
+    sosialImage: 'w-10 h-auto',
+    copyLight: 'text-sm opacity-70 pb-4',
+  },
+});
 
 const SOCIAL_LINKS = [
   {
@@ -16,6 +28,7 @@ const SOCIAL_LINKS = [
 ];
 
 const Footer = () => {
+  const { root, logo, links, sosialLink, sosialImage, copyLight } = footer();
   const [mounted, setMounted] = useState(false);
   const { theme } = useTheme();
   const isDark = theme === 'dark';
@@ -31,33 +44,25 @@ const Footer = () => {
   }
 
   return (
-    <footer className="flex items-center justify-center space-y-4 flex-col">
-      <h2 className="text-base font-semibold">CLMEMO</h2>
-      <div className="flex items-center space-x-4">
-        {mounted ? (
-          SOCIAL_LINKS.map((social) => (
-            <React.Fragment key={social.alt}>
-              <a
-                className="flex items-center"
-                href={social.url}
-                target="_blank"
-              >
-                <Image
-                  className="w-[40px] h-auto"
-                  src={`${isDark ? social.src + '-white' : social.src}.svg`}
-                  alt="GitHub"
-                  width="0"
-                  height="0"
-                  priority
-                />
-              </a>
-            </React.Fragment>
-          ))
-        ) : (
-          <div className="w-10 h-10"></div>
-        )}
+    <footer className={root()}>
+      <h2 className={logo()}>CLMEMO</h2>
+      <div className={links()}>
+        {SOCIAL_LINKS.map((social) => (
+          <React.Fragment key={social.alt}>
+            <a className={sosialLink()} href={social.url} target="_blank">
+              <Image
+                className={sosialImage()}
+                src={`${isDark ? social.src + '-white' : social.src}.svg`}
+                alt="GitHub"
+                width="0"
+                height="0"
+                priority
+              />
+            </a>
+          </React.Fragment>
+        ))}
       </div>
-      <span className="text-sm opacity-70 pb-4">
+      <span className={copyLight()}>
         &copy; {startYear !== year && `${startYear} - `}
         {year} kkkkoki. All Rights Reserved.
       </span>
