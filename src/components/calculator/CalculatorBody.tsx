@@ -42,6 +42,8 @@ const CalculatorBody = () => {
 
     const calculateValue = val ? val : inputValue;
     const nextState = calculate(calculateValue, state);
+    console.log(nextState);
+
     setState(nextState);
 
     const commaValue = nextState.current.replace(commaRegex, '$1,');
@@ -66,6 +68,13 @@ const CalculatorBody = () => {
               current: '0',
             })
           }
+          onChange={(e) => {
+            setState({
+              ...state,
+              current: '0',
+            });
+            setValue('calculator', e.target.value);
+          }}
         />
       </div>
 
