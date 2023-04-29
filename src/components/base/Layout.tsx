@@ -23,8 +23,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
   return isRendered ? (
     <div className="container flex flex-col min-h-screen">
       <Header
-        direction={direction}
         setDirection={() => setDirection(isLTR ? 'RTL' : 'LTR')}
+        headerVariants={{ directionBtn: direction === 'LTR' && true }}
       />
       <div
         className={`flex flex-1 items-center ${
