@@ -31,10 +31,19 @@ const CalculatorBody = () => {
     const commaRegex = /(\d)(?=(\d\d\d)+(?!\d))/g;
     if (!val && state.current === inputValue) {
       return null;
+    } else if (inputValue.length === 0) {
+      setState({
+        ...state,
+        current: '0',
+      });
+      setValue('calculator', '0');
+      return null;
     }
 
     const calculateValue = val ? val : inputValue;
     const nextState = calculate(calculateValue, state);
+    console.log(nextState);
+
     setState(nextState);
 
     const commaValue = nextState.current.replace(commaRegex, '$1,');
@@ -59,6 +68,13 @@ const CalculatorBody = () => {
               current: '0',
             })
           }
+          onChange={(e) => {
+            setState({
+              ...state,
+              current: '0',
+            });
+            setValue('calculator', e.target.value);
+          }}
         />
       </div>
 
