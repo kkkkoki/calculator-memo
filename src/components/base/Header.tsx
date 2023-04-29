@@ -15,15 +15,16 @@ const Header: FC<HeaderProps> = ({ direction, setDirection }) => {
         <h1 className="text-xl font-bold">CLMEMO</h1>
       </Link>
       <div className="flex items-center gap-2">
-        <ThemeToggleButton />
         <button
           className={`w-9 h-9 ${
             direction === 'LTR' && 'rotate-180'
           } transition-all duration-300 hover:scale-110`}
           onClick={setDirection}
+          aria-label="レイアウトを変更する"
         >
           <ArrowsRightLeftIcon />
         </button>
+        <ThemeToggleButton />
       </div>
     </header>
   );
