@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
-import { VariantProps, tv } from 'tailwind-variants';
+import { tv } from 'tailwind-variants';
 
 const footer = tv({
   slots: {
@@ -52,7 +52,9 @@ const Footer = () => {
             <a className={sosialLink()} href={social.url} target="_blank">
               <Image
                 className={sosialImage()}
-                src={`${isDark ? social.src + '-white' : social.src}.svg`}
+                src={`social/${
+                  isDark ? social.src + '-white' : social.src
+                }.svg`}
                 alt="GitHub"
                 width="0"
                 height="0"
