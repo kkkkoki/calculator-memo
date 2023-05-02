@@ -9,7 +9,6 @@ const Favicon = () => {
 
   return (
     <>
-      <link rel="icon" type="image/svg+xml" href="/favicon/favicon.ico" />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
@@ -33,7 +32,7 @@ const Favicon = () => {
         href="/favicon/safari-pinned-tab.svg"
         color="#5bbad5"
       />
-      <meta name="msapplication-TileColor" content="#ffffff" />
+      <meta name="msapplication-TileColor" content="#da532c" />
       <meta name="theme-color" content="#ffffff" />
     </>
   );
