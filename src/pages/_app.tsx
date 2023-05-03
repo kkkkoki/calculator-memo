@@ -1,9 +1,9 @@
 import { ReactElement, ReactNode } from 'react';
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
-import Head from 'next/head';
+import { siteConfig } from '@/_seo/siteConfig';
+import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
-import Favicon from '@/components/base/Favicon';
 import '@/styles/globals.css';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -14,20 +14,33 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-export default function App({ Component, pageProps }: AppPropsWithLayout) {
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
     <>
-      <Head>
-        <title>Calculator Memo</title>
-        <meta charSet="utf-8" />
-        <meta name="description" content="計算機&メモ。計算をより便利に！" />
-        <Favicon />
-      </Head>
+      <DefaultSeo
+        defaultTitle={siteConfig.siteName}
+        description={siteConfig.description}
+        titleTemplate={`%s - Calculator Memo`}
+        twitter={{ cardType: 'summary_large_image' }}
+        openGraph={{
+          type: 'website',
+          title: siteConfig.siteName,
+          locale: 'ja_JP',
+          siteName: siteConfig.siteName,
+          images: [
+            {
+              url: `${siteConfig.origin}/seo/ogp.png`,
+            },
+          ],
+        }}
+      />
       <ThemeProvider attribute="class">
         {getLayout(<Component {...pageProps} />)}
       </ThemeProvider>
     </>
   );
 }
+
+export default MyApp;
