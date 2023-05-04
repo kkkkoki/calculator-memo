@@ -3,7 +3,7 @@ import Favicon from '@/_seo/Favicon';
 
 export default function Document() {
   return (
-    <Html lang="ja" prefix="og:http://ogp.me/ns#">
+    <Html lang="ja">
       <Head>
         <Favicon />
       </Head>
