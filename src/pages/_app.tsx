@@ -20,10 +20,15 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <>
       <DefaultSeo
+        title={undefined}
         defaultTitle={siteConfig.siteName}
         description={siteConfig.description}
         titleTemplate={`%s - Calculator Memo`}
-        twitter={{ cardType: 'summary_large_image' }}
+        twitter={{
+          cardType: 'summary_large_image',
+          handle: `@${siteConfig.author}`,
+          site: `@${siteConfig.siteName}`,
+        }}
         openGraph={{
           type: 'website',
           title: siteConfig.siteName,
@@ -32,6 +37,13 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           images: [
             {
               url: `${siteConfig.origin}/seo/ogp.png`,
+              alt: 'CLMEMO',
+            },
+            {
+              url: `${siteConfig.origin}/seo/ogp-2.png`,
+              width: 800,
+              height: 600,
+              alt: 'CLMEMO',
             },
           ],
         }}
