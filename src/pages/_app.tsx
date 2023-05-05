@@ -24,28 +24,26 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         defaultTitle={siteConfig.siteName}
         description={siteConfig.description}
         titleTemplate={`%s - Calculator Memo`}
-        twitter={{
-          cardType: 'summary_large_image',
-          handle: `@${siteConfig.author}`,
-          site: `@${siteConfig.siteName}`,
-        }}
         openGraph={{
           type: 'website',
-          title: siteConfig.siteName,
           locale: 'ja_JP',
           siteName: siteConfig.siteName,
+          url: siteConfig.origin,
           images: [
             {
               url: `${siteConfig.origin}/seo/ogp.png`,
-              alt: 'CLMEMO',
             },
             {
               url: `${siteConfig.origin}/seo/ogp-2.png`,
               width: 800,
               height: 600,
-              alt: 'CLMEMO',
             },
           ],
+        }}
+        twitter={{
+          cardType: 'summary_large_image',
+          handle: `@${siteConfig.author}`,
+          site: `@${siteConfig.siteName}`,
         }}
       />
       <ThemeProvider attribute="class">
