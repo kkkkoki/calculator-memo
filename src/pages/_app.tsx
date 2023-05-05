@@ -40,15 +40,10 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
             {
               url: `${siteConfig.origin}/seo/ogp.png`,
             },
-            {
-              url: `${siteConfig.origin}/seo/ogp-2.png`,
-              width: 800,
-              height: 600,
-            },
           ],
         }}
         twitter={{
-          cardType: 'summary_large_image',
+          cardType: 'summary',
           handle: `@${siteConfig.author}`,
           site: `@${siteConfig.siteName}`,
         }}
