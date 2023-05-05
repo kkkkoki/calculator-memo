@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           ],
         }}
         twitter={{
-          cardType: 'summary',
+          cardType: 'summary_large_image',
           handle: `@${siteConfig.author}`,
           site: `@${siteConfig.siteName}`,
         }}
