@@ -1,8 +1,7 @@
 import { ReactElement, ReactNode } from 'react';
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
-import Head from 'next/head';
-import { siteConfig } from '@/_seo/siteConfig';
+import SEO from '@/_seo/nextSeoConfig';
 import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
 import '@/styles/globals.css';
@@ -20,28 +19,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <>
-      <DefaultSeo
-        title={undefined}
-        defaultTitle={siteConfig.siteName}
-        description={siteConfig.description}
-        titleTemplate={`%s - Calculator Memo`}
-        openGraph={{
-          type: 'website',
-          locale: 'ja_JP',
-          siteName: siteConfig.siteName,
-          url: siteConfig.origin,
-          images: [
-            {
-              url: `${siteConfig.origin}/seo/ogp.png`,
-            },
-          ],
-        }}
-        twitter={{
-          cardType: 'summary_large_image',
-          handle: `@${siteConfig.author}`,
-          site: `@${siteConfig.siteName}`,
-        }}
-      />
+      <DefaultSeo {...SEO} />
       <ThemeProvider attribute="class">
         {getLayout(<Component {...pageProps} />)}
       </ThemeProvider>
