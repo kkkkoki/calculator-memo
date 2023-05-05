@@ -1,6 +1,7 @@
 import { ReactElement, ReactNode } from 'react';
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
 import { siteConfig } from '@/_seo/siteConfig';
 import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
@@ -19,6 +20,12 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <>
+      <Head>
+        <meta
+          name="twitter:image"
+          content={`${siteConfig.origin}/seo/ogp.png`}
+        />
+      </Head>
       <DefaultSeo
         title={undefined}
         defaultTitle={siteConfig.siteName}
