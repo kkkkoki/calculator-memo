@@ -3,10 +3,8 @@ import Favicon from '@/_seo/Favicon';
 
 export default function Document() {
   return (
-    <Html lang="ja">
-      <Head>
-        <Favicon />
-      </Head>
+    <Html lang="ja" prefix="og:http://ogp.me/ns#">
+      <Head />
       <body>
         <Main />
         <NextScript />
