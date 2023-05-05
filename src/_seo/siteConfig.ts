@@ -4,7 +4,7 @@ export const siteConfig = {
   origin:
     process.env.NODE_ENV === 'development'
       ? 'http://localhost:3000'
-      : 'https://calculator-memo.vercel.app/',
+      : 'https://calculator-memo.vercel.app',
   twitter: 'https://twitter.com/tonamaru4',
   youtube: 'https://www.youtube.com/channel/UCUPq5dKFGnOziaqYI-ejYcg',
   github: 'https://github.com/kkkkoki',
