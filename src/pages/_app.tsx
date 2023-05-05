@@ -20,12 +20,6 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <>
-      <Head>
-        <meta
-          name="twitter:image"
-          content={`${siteConfig.origin}/seo/ogp.png`}
-        />
-      </Head>
       <DefaultSeo
         title={undefined}
         defaultTitle={siteConfig.siteName}
