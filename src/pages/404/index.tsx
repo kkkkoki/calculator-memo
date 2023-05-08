@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { NotFound } from '@/_pages/404';
+import { NotFound } from './404';
 
 const CustomErrorPage: FC = () => {
   return (
