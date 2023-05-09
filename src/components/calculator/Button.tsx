@@ -37,7 +37,6 @@ const Button: FC<ButtonProps> = ({
   val,
   buttonVariants,
   buttonValueVariants,
-  className,
   ...props
 }) => {
   return (

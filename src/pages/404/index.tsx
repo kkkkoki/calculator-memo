@@ -1,5 +1,8 @@
+import { FC } from 'react';
 import { NotFound } from './404';
 
-export default function () {
+const index: FC = () => {
   return <NotFound />;
-}
+};
+
+export default index;
