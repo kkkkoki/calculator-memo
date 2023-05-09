@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 import Layout from '@/components/base/Layout';
 import CalculatorBody from '@/components/calculator/CalculatorBody';
 
-const IndexPage = () => {
+export default function indexPage() {
   return (
     <>
       <div className="flex items-center justify-center w-full h-full">
@@ -11,10 +11,8 @@ const IndexPage = () => {
       </div>
     </>
   );
-};
+}
 
 // IndexPage.getLayout = function getLayout(page: ReactElement) {
 //   return <Layout>{page}</Layout>;
 // };
-
-export default IndexPage;
