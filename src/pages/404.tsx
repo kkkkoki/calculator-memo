@@ -6,7 +6,7 @@ const notFound = tv({
   slots: {
     root: 'flex items-center justify-center h-screen py-6 sm:py-8 lg:py-12',
     flex: 'flex flex-col items-center',
-    logo: 'text-black-800 mr-6 mb-8 inline-flex items-center gap-2.5 text-2xl font-bold md:text-3xl',
+    logo: 'text-black-800 mb-8 inline-flex items-center gap-2.5 text-2xl font-bold md:text-3xl',
     accent:
       'mb-4 text-sm font-semibold uppercase text-orange-400 dark:text-orange-600 md:text-base',
     title: 'mb-2 text-center text-2xl font-bold md:text-3xl',
@@ -15,13 +15,14 @@ const notFound = tv({
   },
 });
 
-export const NotFound: FC = () => {
+const NotFound: FC = () => {
   const { root, flex, logo, accent, title, subTitle, home } = notFound();
   return (
     <div className={root()}>
       <div className={flex()}>
         <Link href="/" className={logo()} aria-label="logo">
-          🧮CLMEMO
+          <span>🧮</span>
+          <span>CLMEMO</span>
         </Link>
 
         <p className={accent()}>That’s a 404</p>
@@ -36,3 +37,5 @@ export const NotFound: FC = () => {
     </div>
   );
 };
+
+export default NotFound;
