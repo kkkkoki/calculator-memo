@@ -6,24 +6,22 @@ import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
 import '@/styles/globals.css';
 
-// export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-//   getLayout?: (page: ReactElement) => ReactNode;
-// };
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
 
-// type AppPropsWithLayout = AppProps & {
-//   Component: NextPageWithLayout;
-// };
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
 
-function MyApp({ Component, pageProps }: AppProps) {
-  // const getLayout = Component.getLayout ?? ((page) => page);
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
     <>
       <DefaultSeo {...SEO} />
       <ThemeProvider attribute="class">
-        {/* {getLayout( */}
-        <Component {...pageProps} />
-        {/* )} */}
+        {getLayout(<Component {...pageProps} />)}
       </ThemeProvider>
     </>
   );

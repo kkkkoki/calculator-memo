@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
-// import { NextPageWithLayout } from './_app';
+import { NextPageWithLayout } from './_app';
 import Layout from '@/components/base/Layout';
 import CalculatorBody from '@/components/calculator/CalculatorBody';
 
-export default function indexPage() {
+const IndexPage: NextPageWithLayout = () => {
   return (
     <>
       <div className="flex items-center justify-center w-full h-full">
@@ -11,8 +11,10 @@ export default function indexPage() {
       </div>
     </>
   );
-}
+};
 
-// IndexPage.getLayout = function getLayout(page: ReactElement) {
-//   return <Layout>{page}</Layout>;
-// };
+IndexPage.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
+
+export default IndexPage;
