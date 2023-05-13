@@ -45,11 +45,11 @@ const Layout = ({ children }: { children: ReactNode }) => {
         headerVariants={{ directionBtn: direction === 'LTR' && true }}
       />
       <div className={flex()}>
-        <div className={dummy()}>
+        {/* <div className={dummy()}>
           <p>hello world</p>
-        </div>
+        </div> */}
         <main className={contents()}>{children}</main>
-        <span className={dummy()}></span>
+        {/* <span className={dummy()}></span> */}
       </div>
       <Footer />
     </div>
