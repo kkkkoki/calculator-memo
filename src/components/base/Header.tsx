@@ -38,13 +38,13 @@ const Header: FC<HeaderProps> = ({ setDirection, headerVariants }) => {
         <h1 className={logo()}>CLMEMO</h1>
       </Link>
       <div className={actions()}>
-        <button
+        {/* <button
           className={directionBtn()}
           onClick={setDirection}
           aria-label="レイアウトを変更する"
         >
           <ArrowsRightLeftIcon />
-        </button>
+        </button> */}
         <ThemeToggleButton />
       </div>
     </header>
