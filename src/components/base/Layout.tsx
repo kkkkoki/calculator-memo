@@ -7,10 +7,11 @@ type LayoutDirectionType = 'RTL' | 'LTR';
 
 const layout = tv({
   slots: {
-    root: 'container flex flex-col min-h-screen',
+    root: 'flex flex-col min-h-screen',
+    container: 'container',
     flex: 'flex flex-1 items-center flex-row',
-    contents: 'flex items-center my-16 flex-1',
-    dummy: 'w-40 text-center',
+    contents: 'flex items-center justify-center my-16 flex-1',
+    dummy: 'w-80 text-center',
   },
   variants: {
     flex: {
@@ -25,7 +26,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
   const [direction, setDirection] = useState<LayoutDirectionType | null>(null);
   const [isRendered, setIsRendered] = useState(false);
   const isLTR = direction === 'LTR';
-  const { root, flex, contents, dummy } = layout({ flex: isLTR });
+  const { root, container, flex, contents, dummy } = layout({ flex: isLTR });
 
   useEffect(() => {
     setIsRendered(true);
@@ -41,10 +42,13 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
   return isRendered ? (
     <div className={root()}>
-      <Header
-        setDirection={() => setDirection(isLTR ? 'RTL' : 'LTR')}
-        headerVariants={{ directionBtn: direction === 'LTR' && true }}
-      />
+      <div className={container()}>
+        <Header
+          setDirection={() => setDirection(isLTR ? 'RTL' : 'LTR')}
+          headerVariants={{ directionBtn: direction === 'LTR' && true }}
+        />
+      </div>
+
       <div className={flex()}>
         <div className={dummy()}>
           <p>hello world</p>
@@ -52,7 +56,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <main className={contents()}>{children}</main>
         <span className={dummy()}></span>
       </div>
-      <Footer />
+
+      <div className={container()}>
+        <Footer />
+      </div>
     </div>
   ) : (
     <></>

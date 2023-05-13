@@ -4,13 +4,7 @@ import Layout from '@/components/base/Layout';
 import CalculatorBody from '@/components/calculator/CalculatorBody';
 
 const IndexPage: NextPageWithLayout = () => {
-  return (
-    <>
-      <div className="flex items-center justify-center w-full h-full">
-        <CalculatorBody />
-      </div>
-    </>
-  );
+  return <CalculatorBody />;
 };
 
 IndexPage.getLayout = function getLayout(page: ReactElement) {
