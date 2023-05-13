@@ -2,7 +2,8 @@ import { ReactNode, useEffect, useState } from 'react';
 import { tv } from 'tailwind-variants';
 import Footer from './Footer';
 import Header from './Header';
-import { LayoutDirectionType } from '@/types/layoutDirection';
+
+type LayoutDirectionType = 'RTL' | 'LTR';
 
 const layout = tv({
   slots: {
