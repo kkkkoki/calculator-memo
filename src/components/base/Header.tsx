@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import { ArrowsRightLeftIcon } from '@heroicons/react/24/solid';
+import { ArrowUturnLeftIcon } from '@heroicons/react/24/solid';
 import { VariantProps, tv } from 'tailwind-variants';
 import ThemeToggleButton from '../ThemeToggleButton';
 
@@ -9,13 +9,12 @@ const header = tv({
     root: 'flex items-center justify-between h-16',
     logo: 'text-xl font-bold',
     actions: 'flex items-center gap-2',
-    directionBtn:
-      'w-9 h-9 rotate-180 transition-all duration-300 hover:scale-110',
+    directionBtn: 'w-9 h-9 -scale-x-100 transition-all duration-300',
   },
   variants: {
     directionBtn: {
       true: {
-        directionBtn: 'rotate-0',
+        directionBtn: 'scale-x-100',
       },
     },
   },
@@ -43,7 +42,7 @@ const Header: FC<HeaderProps> = ({ setDirection, headerVariants }) => {
           onClick={setDirection}
           aria-label="レイアウトを変更する"
         >
-          <ArrowsRightLeftIcon />
+          <ArrowUturnLeftIcon />
         </button>
         <ThemeToggleButton />
       </div>
