@@ -57,7 +57,7 @@ const MemoLabel: FC<Props> = ({ label, index }) => {
     setIsEditMode(!isEditMode);
   };
 
-  const clear = () => {
+  const cancel = () => {
     reset();
     setIsEditMode(!isEditMode);
   };
@@ -88,7 +88,7 @@ const MemoLabel: FC<Props> = ({ label, index }) => {
               <CheckIcon className={check()} />
             </button>
 
-            <button className={iconBtn()} type="button" onClick={clear}>
+            <button className={iconBtn()} type="button" onClick={cancel}>
               <XMarkIcon className={xMark()} />
             </button>
           </div>
