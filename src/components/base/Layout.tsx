@@ -2,6 +2,7 @@ import { ReactNode, useEffect, useState } from 'react';
 import { tv } from 'tailwind-variants';
 import Footer from './Footer';
 import Header from './Header';
+import SideNav from './SideNav';
 
 type LayoutDirectionType = 'RTL' | 'LTR';
 
@@ -9,14 +10,23 @@ const layout = tv({
   slots: {
     root: 'flex flex-col min-h-screen',
     container: 'container',
-    flex: 'flex flex-1 items-center flex-row',
+    flex: 'flex flex-1 items-stretch flex-row',
     contents: 'flex items-center justify-center my-16 flex-1',
-    dummy: 'w-80 text-center',
   },
+
   variants: {
     flex: {
       true: {
         flex: 'flex-row-reverse',
+      },
+    },
+
+    sideMemo: {
+      true: {
+        sideMemo: 'border-r-2 border-l-0',
+      },
+      false: {
+        sideMemo: 'border-l-2 border-r-0',
       },
     },
   },
@@ -26,7 +36,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
   const [direction, setDirection] = useState<LayoutDirectionType | null>(null);
   const [isRendered, setIsRendered] = useState(false);
   const isLTR = direction === 'LTR';
-  const { root, container, flex, contents, dummy } = layout({ flex: isLTR });
+  const { root, container, flex, contents } = layout({
+    flex: isLTR,
+    sideMemo: isLTR,
+  });
 
   useEffect(() => {
     setIsRendered(true);
@@ -45,16 +58,13 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <div className={container()}>
         <Header
           setDirection={() => setDirection(isLTR ? 'RTL' : 'LTR')}
-          headerVariants={{ directionBtn: direction === 'LTR' && true }}
+          headerVariants={{ directionBtn: isLTR }}
         />
       </div>
 
       <div className={flex()}>
-        <div className={dummy()}>
-          <p>hello world</p>
-        </div>
         <main className={contents()}>{children}</main>
-        <span className={dummy()}></span>
+        <SideNav sideNavVariants={{ root: isLTR }} />
       </div>
 
       <div className={container()}>
