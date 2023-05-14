@@ -2,19 +2,31 @@ import { ReactNode, useEffect, useState } from 'react';
 import { tv } from 'tailwind-variants';
 import Footer from './Footer';
 import Header from './Header';
-import { LayoutDirectionType } from '@/types/layoutDirection';
+import SideNav from './SideNav';
+
+type LayoutDirectionType = 'RTL' | 'LTR';
 
 const layout = tv({
   slots: {
-    root: 'container flex flex-col min-h-screen',
-    flex: 'flex flex-1 items-center flex-row',
-    contents: 'flex items-center my-16 flex-1',
-    dummy: 'w-40 text-center',
+    root: 'flex flex-col min-h-screen',
+    container: 'container',
+    flex: 'flex flex-1 items-stretch flex-row',
+    contents: 'flex items-center justify-center my-16 flex-1',
   },
+
   variants: {
     flex: {
       true: {
         flex: 'flex-row-reverse',
+      },
+    },
+
+    sideMemo: {
+      true: {
+        sideMemo: 'border-r-2 border-l-0',
+      },
+      false: {
+        sideMemo: 'border-l-2 border-r-0',
       },
     },
   },
@@ -24,7 +36,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
   const [direction, setDirection] = useState<LayoutDirectionType | null>(null);
   const [isRendered, setIsRendered] = useState(false);
   const isLTR = direction === 'LTR';
-  const { root, flex, contents, dummy } = layout({ flex: isLTR });
+  const { root, container, flex, contents } = layout({
+    flex: isLTR,
+    sideMemo: isLTR,
+  });
 
   useEffect(() => {
     setIsRendered(true);
@@ -40,18 +55,21 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
   return isRendered ? (
     <div className={root()}>
-      <Header
-        setDirection={() => setDirection(isLTR ? 'RTL' : 'LTR')}
-        headerVariants={{ directionBtn: direction === 'LTR' && true }}
-      />
-      <div className={flex()}>
-        {/* <div className={dummy()}>
-          <p>hello world</p>
-        </div> */}
-        <main className={contents()}>{children}</main>
-        {/* <span className={dummy()}></span> */}
+      <div className={container()}>
+        <Header
+          setDirection={() => setDirection(isLTR ? 'RTL' : 'LTR')}
+          headerVariants={{ directionBtn: isLTR }}
+        />
       </div>
-      <Footer />
+
+      <div className={flex()}>
+        <main className={contents()}>{children}</main>
+        <SideNav sideNavVariants={{ root: isLTR }} />
+      </div>
+
+      <div className={container()}>
+        <Footer />
+      </div>
     </div>
   ) : (
     <></>
