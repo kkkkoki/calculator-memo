@@ -1,32 +1,24 @@
-import {
-  ButtonCode,
-  CalculateState,
-  NumberCode,
-  Operator,
-} from '@/types/calculate';
+import { ButtonCode, CalculateState, NumberCode, Operator } from "@/types/calculate";
 
 export const isNumber = (val: ButtonCode): val is NumberCode => {
   const numRegex = /[0-9]/;
   return numRegex.test(val);
 };
 
-export const calculate = (
-  value: ButtonCode,
-  state: CalculateState
-): CalculateState => {
+export const calculate = (value: ButtonCode, state: CalculateState): CalculateState => {
   if (isNumber(value)) {
     return handleNumber(value, state);
   } else {
     switch (value) {
-      case '=':
+      case "=":
         return hadleEqual(state);
-      case '.':
+      case ".":
         return handleDot(state);
-      case 'AC':
+      case "AC":
         return handleAllClear();
-      case '%':
+      case "%":
         return handlePercent(state);
-      case '+-':
+      case "+-":
         return handleSignChange(state);
       default:
         return handleOperator(value, state);
@@ -34,20 +26,14 @@ export const calculate = (
   }
 };
 
-const handleNumber = (
-  value: NumberCode,
-  state: CalculateState
-): CalculateState => {
-  const isCurrentZero = state.current === '0';
-  const isDoubleZero = value === '00';
+const handleNumber = (value: NumberCode, state: CalculateState): CalculateState => {
+  const isCurrentZero = state.current === "0";
+  const isDoubleZero = value === "00";
   // valueが"00"の例外処理
-  if (
-    isDoubleZero &&
-    (isCurrentZero || state.current === `${state.operand}` || state.isNextClear)
-  ) {
+  if (isDoubleZero && (isCurrentZero || state.current === `${state.operand}` || state.isNextClear)) {
     return {
       ...state,
-      current: '0',
+      current: "0",
     };
   }
 
@@ -60,10 +46,7 @@ const handleNumber = (
   };
 };
 
-const handleOperator = (
-  value: Operator,
-  state: CalculateState
-): CalculateState => {
+const handleOperator = (value: Operator, state: CalculateState): CalculateState => {
   if (state.operator === null) {
     return {
       current: state.current,
@@ -104,12 +87,12 @@ const handlePercent = (state: CalculateState): CalculateState => {
 };
 
 const handleDot = (state: CalculateState): CalculateState => {
-  if (state.current.indexOf('.') !== -1) {
+  if (state.current.indexOf(".") !== -1) {
     return state;
   }
 
   return {
-    current: state.current + '.',
+    current: state.current + ".",
     operand: state.operand,
     operator: state.operator,
     isNextClear: false,
@@ -128,7 +111,7 @@ const handleDot = (state: CalculateState): CalculateState => {
 
 const handleAllClear = (): CalculateState => {
   return {
-    current: '0',
+    current: "0",
     operand: 0,
     operator: null,
     isNextClear: false,
@@ -166,13 +149,13 @@ const operate = (state: CalculateState): number => {
   const current = parseFloat(state.current);
 
   switch (state.operator) {
-    case '+':
+    case "+":
       return state.operand + current;
-    case '-':
+    case "-":
       return state.operand - current;
-    case '×':
+    case "×":
       return state.operand * current;
-    case '÷':
+    case "÷":
       return state.operand / current;
     default:
       break;
