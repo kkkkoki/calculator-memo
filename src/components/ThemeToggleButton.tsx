@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react';
-import { Around } from '@theme-toggles/react';
-import '@theme-toggles/react/css/Around.css';
-import { useTheme } from 'next-themes';
+import { useEffect, useState } from "react";
+
+import { Around } from "@theme-toggles/react";
+
+import "@theme-toggles/react/css/Around.css";
+import { useTheme } from "next-themes";
 
 const ThemeToggleButton = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
-  const isDark = theme === 'dark';
+  const isDark = theme === "dark";
 
   useEffect(() => {
     setMounted(true);
@@ -18,7 +20,7 @@ const ThemeToggleButton = () => {
 
   return (
     <Around
-      onToggle={() => setTheme(isDark ? 'light' : 'dark')}
+      onToggle={() => setTheme(isDark ? "light" : "dark")}
       toggled={isDark}
       className="text-[40px] hover:-rotate-[30deg] dark:hover:-rotate-12 transition-all duration-300"
       duration={750}

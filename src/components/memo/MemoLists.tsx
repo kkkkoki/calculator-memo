@@ -1,19 +1,21 @@
-import { Fragment } from 'react';
-import { PlusCircleIcon } from '@heroicons/react/24/solid';
-import { useFieldArray, useFormContext } from 'react-hook-form';
-import { type FormValues } from '../base/SideNav';
-import Memo from './Memo';
+import { Fragment } from "react";
+
+import { PlusCircleIcon } from "@heroicons/react/24/solid";
+import { useFieldArray, useFormContext } from "react-hook-form";
+
+import { type FormValues } from "../base/SideNav";
+import Memo from "./Memo";
 
 const MemoLists = () => {
   const { control, getValues } = useFormContext<FormValues>();
   const { fields, append, remove } = useFieldArray({
-    name: 'memo',
+    name: "memo",
     control,
   });
 
   const addMemo = () => {
-    append({ label: 'No Title', calc: 0 });
-    localStorage.setItem('memoValue', JSON.stringify(getValues('memo')));
+    append({ label: "No Title", calc: 0 });
+    localStorage.setItem("memoValue", JSON.stringify(getValues("memo")));
   };
 
   return (

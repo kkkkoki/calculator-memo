@@ -1,16 +1,16 @@
-import { FC } from 'react';
-import { useMemoItems } from '@/hooks/useMemoItems';
-import { MinusCircleIcon } from '@heroicons/react/24/solid';
-import {
-  type FieldArrayWithId,
-  type UseFieldArrayRemove,
-} from 'react-hook-form';
-import { type FormValues } from '../base/SideNav';
-import CalcInput from './CalcInput';
-import MemoLabel from './MemoLabel';
+import { FC } from "react";
+
+import { MinusCircleIcon } from "@heroicons/react/24/solid";
+import { type FieldArrayWithId, type UseFieldArrayRemove } from "react-hook-form";
+
+import { useMemoItems } from "@/hooks/useMemoItems";
+
+import { type FormValues } from "../base/SideNav";
+import CalcInput from "./CalcInput";
+import MemoLabel from "./MemoLabel";
 
 export type SectionProps = {
-  field: FieldArrayWithId<FormValues, 'memo', 'id'>;
+  field: FieldArrayWithId<FormValues, "memo", "id">;
   index: number;
   remove: UseFieldArrayRemove;
 };

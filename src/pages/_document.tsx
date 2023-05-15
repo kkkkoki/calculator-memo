@@ -1,5 +1,6 @@
-import { Head, Html, Main, NextScript } from 'next/document';
-import Favicon from '@/_seo/Favicon';
+import { Head, Html, Main, NextScript } from "next/document";
+
+import Favicon from "@/_seo/Favicon";
 
 export default function Document() {
   return (

@@ -1,7 +1,10 @@
-import { FC } from 'react';
-import { useMemoItems } from '@/hooks/useMemoItems';
-import { useFormContext } from 'react-hook-form';
-import { type FormValues } from '../base/SideNav';
+import { FC } from "react";
+
+import { useFormContext } from "react-hook-form";
+
+import { useMemoItems } from "@/hooks/useMemoItems";
+
+import { type FormValues } from "../base/SideNav";
 
 const CalcInput: FC<{ index: number }> = ({ index }) => {
   const { register, getValues, reset } = useFormContext<FormValues>();

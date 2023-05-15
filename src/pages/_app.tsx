@@ -1,15 +1,14 @@
-import { ReactElement, ReactNode } from 'react';
-import { NextPage } from 'next';
-import type { AppProps } from 'next/app';
-import SEO from '@/_seo/nextSeoConfig';
-import { DefaultSeo } from 'next-seo';
-import { ThemeProvider } from 'next-themes';
-import '@/styles/globals.css';
+import { ReactElement, ReactNode } from "react";
+import { NextPage } from "next";
+import type { AppProps } from "next/app";
 
-export type NextPageWithLayout<P = Record<string, never>, IP = P> = NextPage<
-  P,
-  IP
-> & {
+import SEO from "@/_seo/nextSeoConfig";
+import { DefaultSeo } from "next-seo";
+import { ThemeProvider } from "next-themes";
+
+import "@/styles/globals.css";
+
+export type NextPageWithLayout<P = Record<string, never>, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
 
@@ -23,9 +22,7 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   return (
     <>
       <DefaultSeo {...SEO} />
-      <ThemeProvider attribute="class">
-        {getLayout(<Component {...pageProps} />)}
-      </ThemeProvider>
+      <ThemeProvider attribute="class">{getLayout(<Component {...pageProps} />)}</ThemeProvider>
     </>
   );
 };
