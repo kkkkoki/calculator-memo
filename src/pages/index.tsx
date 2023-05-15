@@ -1,7 +1,9 @@
-import { ReactElement } from 'react';
-import { NextPageWithLayout } from './_app';
-import Layout from '@/components/base/Layout';
-import CalculatorBody from '@/components/calculator/CalculatorBody';
+import { ReactElement } from "react";
+
+import Layout from "@/components/base/Layout";
+import CalculatorBody from "@/components/calculator/CalculatorBody";
+
+import { NextPageWithLayout } from "./_app";
 
 const IndexPage: NextPageWithLayout = () => {
   return <CalculatorBody />;

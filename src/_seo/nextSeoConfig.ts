@@ -1,5 +1,6 @@
-import { DefaultSeoProps } from 'next-seo';
-import { siteConfig } from './siteConfig';
+import { DefaultSeoProps } from "next-seo";
+
+import { siteConfig } from "./siteConfig";
 
 const config: DefaultSeoProps = {
   title: undefined,
@@ -7,8 +8,8 @@ const config: DefaultSeoProps = {
   defaultTitle: siteConfig.siteName,
   description: siteConfig.description,
   openGraph: {
-    type: 'website',
-    locale: 'ja_JP',
+    type: "website",
+    locale: "ja_JP",
     siteName: siteConfig.siteName,
     url: siteConfig.origin,
     images: [
@@ -20,7 +21,7 @@ const config: DefaultSeoProps = {
   twitter: {
     handle: `@${siteConfig.author}`,
     site: `@${siteConfig.siteName}`,
-    cardType: 'summary_large_image',
+    cardType: "summary_large_image",
   },
 };
 

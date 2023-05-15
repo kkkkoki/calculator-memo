@@ -1,9 +1,12 @@
-import { FC, useEffect } from 'react';
-import { useMemoItems } from '@/hooks/useMemoItems';
-import { FormProvider, useForm } from 'react-hook-form';
-import { VariantProps, tv } from 'tailwind-variants';
-import MemoLists from '../memo/MemoLists';
-import { MemoValue } from '@/types/memoValue';
+import { FC, useEffect } from "react";
+
+import { MemoValue } from "@/types/memoValue";
+import { FormProvider, useForm } from "react-hook-form";
+import { tv, VariantProps } from "tailwind-variants";
+
+import { useMemoItems } from "@/hooks/useMemoItems";
+
+import MemoLists from "../memo/MemoLists";
 
 export type FormValues = {
   memo: MemoValue[];
@@ -15,16 +18,16 @@ type SideNavProps = {
 
 const sideNav = tv({
   slots: {
-    root: 'relative w-[400px] flex items-center justify-center flex-col gap-2 border-solid border-r-2 border-x-white',
+    root: "relative w-[400px] flex items-center justify-center flex-col gap-2 border-solid border-r-2 border-x-white",
   },
 
   variants: {
     root: {
       true: {
-        root: 'border-r-2 border-l-0',
+        root: "border-r-2 border-l-0",
       },
       false: {
-        root: 'border-l-2 border-r-0',
+        root: "border-l-2 border-r-0",
       },
     },
   },
