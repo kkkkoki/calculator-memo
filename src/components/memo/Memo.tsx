@@ -2,12 +2,21 @@ import { FC } from "react";
 
 import { MinusCircleIcon } from "@heroicons/react/24/solid";
 import { type FieldArrayWithId, type UseFieldArrayRemove } from "react-hook-form";
+import { tv } from "tailwind-variants";
 
 import { useMemoItems } from "@/hooks/useMemoItems";
 
 import { type FormValues } from "../base/SideNav";
 import CalcInput from "./CalcInput";
 import MemoLabel from "./MemoLabel";
+
+const memo = tv({
+  slots: {
+    root: "flex flex-col gap-1",
+    inputDeleteWrap: "flex items-center gap-2",
+    deleteBtn: "w-10 h-10 p-1 rounded-full hover:scale-110 transition-transform duration-300",
+  },
+});
 
 export type SectionProps = {
   field: FieldArrayWithId<FormValues, "memo", "id">;
@@ -16,6 +25,7 @@ export type SectionProps = {
 };
 
 const Memo: FC<SectionProps> = ({ field, index, remove }) => {
+  const { root, inputDeleteWrap, deleteBtn } = memo();
   const { setMemoArray, memoArray } = useMemoItems();
 
   const deleteMemo = () => {
@@ -26,17 +36,12 @@ const Memo: FC<SectionProps> = ({ field, index, remove }) => {
 
   return (
     <>
-      <div className="flex flex-col gap-1">
+      <div className={root()}>
         <MemoLabel label={field.label} index={index} />
 
-        <div className="flex items-center gap-2">
+        <div className={inputDeleteWrap()}>
           <CalcInput index={index} />
-          <button
-            className="w-10 h-10 p-1 rounded-full hover:scale-110 transition-transform duration-300"
-            onClick={deleteMemo}
-            type="button"
-            aria-label="メモを削除"
-          >
+          <button className={deleteBtn()} onClick={deleteMemo} type="button" aria-label="メモを削除">
             <MinusCircleIcon />
           </button>
         </div>
