@@ -4,6 +4,11 @@ import { Around } from "@theme-toggles/react";
 
 import "@theme-toggles/react/css/Around.css";
 import { useTheme } from "next-themes";
+import { tv } from "tailwind-variants";
+
+const button = tv({
+  base: "text-[40px] hover:-rotate-[30deg] dark:hover:-rotate-12 transition-all duration-300",
+});
 
 const ThemeToggleButton = () => {
   const [mounted, setMounted] = useState(false);
@@ -19,12 +24,7 @@ const ThemeToggleButton = () => {
   }
 
   return (
-    <Around
-      onToggle={() => setTheme(isDark ? "light" : "dark")}
-      toggled={isDark}
-      className="text-[40px] hover:-rotate-[30deg] dark:hover:-rotate-12 transition-all duration-300"
-      duration={750}
-    />
+    <Around onToggle={() => setTheme(isDark ? "light" : "dark")} toggled={isDark} className={button()} duration={750} />
   );
 };
 
