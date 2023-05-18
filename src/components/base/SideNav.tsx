@@ -1,10 +1,9 @@
 import { FC, useEffect } from "react";
 
+import { useMemoItems } from "@/hooks/useMemoItems";
 import { MemoValue } from "@/types/memoValue";
 import { FormProvider, useForm } from "react-hook-form";
 import { tv, VariantProps } from "tailwind-variants";
-
-import { useMemoItems } from "@/hooks/useMemoItems";
 
 import MemoLists from "../memo/MemoLists";
 

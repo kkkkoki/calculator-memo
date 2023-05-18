@@ -8,7 +8,7 @@ const button = tv({
   variants: {
     color: {
       num: "bg-slate-9 hover:bg-slate-10 focus:outline-orange-10",
-      symbol: "bg-orangeA-9 hover:bg-orangeA-10 focus:outline-slate-10",
+      symbol: "bg-orangeA-9 hover:bg-orangeA-10 focus:outline-sand-10",
     },
     large: {
       true: "col-span-2 w-full",

@@ -8,11 +8,11 @@ import Button from "./Button";
 import { calculate, isNumber } from "./calculate";
 
 const calculatorBody = tv({
-  base: "flex flex-col items-center max-w-xs p-6 rounded-lg shadow-lg bg-opacity-40 bg-orange-200 dark:bg-gray-800",
+  base: "flex flex-col items-center max-w-xs p-6 rounded-lg shadow-lg bg-orange-6 dark:bg-sand-4",
 });
 
 const displayInput = tv({
-  base: "w-full p-2 mb-4 rounded-lg text-4xl text-right shadow-sm outline-none outline-2 caret-slate-400 focus:outline-slate-400",
+  base: "w-full p-2 mb-4 rounded-lg text-4xl text-right shadow-sm outline-none outline-2 caret-orange-8 focus:outline-orange-10",
 });
 
 const buttonGroup = tv({
