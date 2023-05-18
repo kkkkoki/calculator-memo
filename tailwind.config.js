@@ -7,10 +7,7 @@ module.exports = withTV({
   theme: {
     extend: {
       colors: {
-        "bgc-light": "#f0e7db",
-        "bgc-dark": "#202320",
-        "text-color-light": "#1a202c",
-        "text-color-dark": "#fff",
+        "app-background": "var(--color-app-background)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -43,6 +40,10 @@ module.exports = withTV({
         slateA: radixColors.slateA,
         slateDark: radixColors.slateDark,
         slateDarkA: radixColors.slateDarkA,
+        brown: radixColors.brown,
+        brownA: radixColors.brownA,
+        brownDark: radixColors.brownDark,
+        brownDarkA: radixColors.brownDarkA,
       },
     }),
   ],
