@@ -4,11 +4,11 @@ import { ButtonCode } from "@/types/calculate";
 import { tv, VariantProps } from "tailwind-variants";
 
 const button = tv({
-  base: "inline-flex items-center justify-center w-14 h-14 rounded-full transition-all outline-none text-2xl font-bold shadow-md hover:bg-opacity-80 dark:hover:bg-opacity-75 hover:shadow-none focus:outline-slate-400",
+  base: "inline-flex items-center justify-center w-14 h-14 rounded-full transition-all outline-none text-2xl font-bold shadow-md hover:shadow-none",
   variants: {
     color: {
-      num: "bg-gray-400 dark:bg-gray-600",
-      symbol: "bg-orange-400 dark:bg-orange-600",
+      num: "bg-slate-9 hover:bg-slate-10 focus:outline-orange-10",
+      symbol: "bg-orangeA-9 hover:bg-orangeA-10 focus:outline-sand-10",
     },
     large: {
       true: "col-span-2 w-full",
