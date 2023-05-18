@@ -1,10 +1,9 @@
 import { FC } from "react";
 
+import { useMemoItems } from "@/hooks/useMemoItems";
 import { MinusCircleIcon } from "@heroicons/react/24/solid";
 import { type FieldArrayWithId, type UseFieldArrayRemove } from "react-hook-form";
 import { tv } from "tailwind-variants";
-
-import { useMemoItems } from "@/hooks/useMemoItems";
 
 import { type FormValues } from "../base/SideNav";
 import CalcInput from "./CalcInput";

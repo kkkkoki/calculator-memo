@@ -1,14 +1,13 @@
 import { FC } from "react";
 
+import { useMemoItems } from "@/hooks/useMemoItems";
 import { useFormContext } from "react-hook-form";
 import { tv } from "tailwind-variants";
-
-import { useMemoItems } from "@/hooks/useMemoItems";
 
 import { type FormValues } from "../base/SideNav";
 
 const input = tv({
-  base: "p-2 rounded-lg text-2xl text-right shadow-sm outline-none outline-2 caret-slate-400 focus:outline-slate-400",
+  base: "p-2 rounded-lg text-2xl text-right shadow-sm outline-none outline-2 caret-orange-8 focus:outline-orange-10",
 });
 
 const CalcInput: FC<{ index: number }> = ({ index }) => {

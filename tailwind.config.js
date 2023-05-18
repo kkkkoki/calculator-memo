@@ -1,15 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 const { withTV } = require("tailwind-variants/transformer");
+const radixColors = require("@radix-ui/colors");
 
 module.exports = withTV({
   content: ["./src/pages/**/*.{js,ts,jsx,tsx}", "./src/components/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        "bgc-light": "#f0e7db",
-        "bgc-dark": "#202320",
-        "text-color-light": "#1a202c",
-        "text-color-dark": "#fff",
+        "app-background": "var(--color-app-background)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -27,6 +25,27 @@ module.exports = withTV({
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("windy-radix-palette")({
+      colors: {
+        orange: radixColors.orange,
+        orangeA: radixColors.orangeA,
+        orangeDark: radixColors.orangeDark,
+        orangeDarkA: radixColors.orangeDarkA,
+        sand: radixColors.sand,
+        sandA: radixColors.sandA,
+        sandDark: radixColors.sandDark,
+        sandDarkA: radixColors.sandDarkA,
+        slate: radixColors.slate,
+        slateA: radixColors.slateA,
+        slateDark: radixColors.slateDark,
+        slateDarkA: radixColors.slateDarkA,
+        brown: radixColors.brown,
+        brownA: radixColors.brownA,
+        brownDark: radixColors.brownDark,
+        brownDarkA: radixColors.brownDarkA,
+      },
+    }),
+  ],
   darkMode: "class",
 });

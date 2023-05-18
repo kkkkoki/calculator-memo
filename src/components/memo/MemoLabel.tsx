@@ -1,10 +1,9 @@
 import { FC, useState } from "react";
 
+import { useMemoItems } from "@/hooks/useMemoItems";
 import { CheckIcon, PencilIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { useFormContext } from "react-hook-form";
 import { tv } from "tailwind-variants";
-
-import { useMemoItems } from "@/hooks/useMemoItems";
 
 import { FormValues } from "../base/SideNav";
 
@@ -13,7 +12,7 @@ const memoLabel = tv({
     root: "h-8 flex flex-row items-center gap-5",
     formWrap: "flex flex-col gap-1",
     error: "text-red-400",
-    input: "p-1 rounded-lg text-sm shadow-sm outline-none outline-1 caret-slate-400 focus:outline-slate-400",
+    input: "p-1 rounded-lg text-sm shadow-sm outline-none outline-1 caret-orange-8 focus:outline-orange-10",
     labelText: "text-lg",
     actions: "flex items-center gap-2",
     iconBtn: "p-1 rounded-full hover:scale-110 transition-transform duration-300",

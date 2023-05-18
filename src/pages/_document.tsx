@@ -8,7 +8,7 @@ export default function Document() {
       <Head>
         <Favicon />
       </Head>
-      <body>
+      <body className="bg-brown-4 dark:bg-sand-1 text-brown-12">
         <Main />
         <NextScript />
       </body>
