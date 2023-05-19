@@ -6,7 +6,7 @@ import { tv } from "tailwind-variants";
 
 const footer = tv({
   slots: {
-    root: "flex items-center justify-center space-y-4 flex-col",
+    root: "flex items-center justify-center space-y-4 flex-col mt-8",
     logo: "text-base font-semibold",
     links: "flex items-center space-x-4",
     sosialLink: "flex items-center",
