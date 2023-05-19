@@ -11,7 +11,7 @@ const header = tv({
     root: "flex items-center justify-between h-16",
     logo: "text-xl font-bold",
     actions: "flex items-center gap-2",
-    directionBtn: "w-9 h-9 -scale-x-100 transition-all duration-300",
+    directionBtn: "hidden w-9 h-9 -scale-x-100 transition-all duration-300 md:block",
   },
   variants: {
     directionBtn: {
