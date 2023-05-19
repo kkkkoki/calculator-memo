@@ -17,16 +17,16 @@ type SideNavProps = {
 
 const sideNav = tv({
   slots: {
-    root: "relative w-[400px] flex items-center justify-center flex-col gap-2 border-solid border-r-2 border-x-white",
+    root: "relative md:w-[400px] flex items-center justify-center flex-col gap-2 border-solid border-x-white",
   },
 
   variants: {
     root: {
       true: {
-        root: "border-r-2 border-l-0",
+        root: "md:border-r-2 border-l-0",
       },
       false: {
-        root: "border-l-2 border-r-0",
+        root: "md:border-l-2 border-r-0",
       },
     },
   },
