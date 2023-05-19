@@ -12,7 +12,7 @@ const layout = tv({
   slots: {
     root: "flex flex-col min-h-screen",
     container: "container",
-    flex: "flex flex-1 items-stretch flex-row",
+    flex: "md:flex flex-1 items-stretch flex-row",
     contents: "flex items-center justify-center my-16 flex-1",
   },
 
