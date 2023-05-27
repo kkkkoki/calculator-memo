@@ -6,7 +6,6 @@ const config: Metadata = {
   title: siteConfig.siteName,
   description: siteConfig.description,
   authors: { name: siteConfig.author, url: siteConfig.github },
-  creator: siteConfig.author,
   openGraph: {
     title: siteConfig.siteName,
     description: siteConfig.description,
@@ -15,13 +14,9 @@ const config: Metadata = {
         url: `${siteConfig.origin}/seo/ogp.png`,
       },
     ],
-    locale: "ja-JP",
-    type: "website",
   },
   twitter: {
-    site: `@${siteConfig.siteName}`,
     card: "summary_large_image",
-    creator: `@${siteConfig.author}`,
   },
   icons: {
     icon: process.env.NODE_ENV === "development" ? "/favicon/favicon-dev.ico" : "favicon/favicon-32x32.png",
