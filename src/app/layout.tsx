@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 
+import "@/styles/globals.css";
 import config from "@/_seo/nextSeoConfig";
 
 import Providers from "../components/providers";
