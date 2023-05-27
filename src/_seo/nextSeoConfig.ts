@@ -1,28 +1,34 @@
-import { DefaultSeoProps } from "next-seo";
+import { Metadata } from "next";
 
 import { siteConfig } from "./siteConfig";
 
-const config: DefaultSeoProps = {
-  title: undefined,
-  titleTemplate: `%s | ${siteConfig.siteName}`,
-  defaultTitle: siteConfig.siteName,
+const config: Metadata = {
+  title: siteConfig.siteName,
   description: siteConfig.description,
+  authors: { name: siteConfig.author, url: siteConfig.github },
+  creator: siteConfig.author,
   openGraph: {
-    type: "website",
-    locale: "ja_JP",
-    siteName: siteConfig.siteName,
-    url: siteConfig.origin,
+    title: siteConfig.siteName,
+    description: siteConfig.description,
     images: [
       {
         url: `${siteConfig.origin}/seo/ogp.png`,
       },
     ],
+    locale: "ja-JP",
+    type: "website",
   },
   twitter: {
-    handle: `@${siteConfig.author}`,
     site: `@${siteConfig.siteName}`,
-    cardType: "summary_large_image",
+    card: "summary_large_image",
+    creator: `@${siteConfig.author}`,
   },
+  icons: {
+    icon: process.env.NODE_ENV === "development" ? "/favicon/favicon-dev.ico" : "favicon/favicon-32x32.png",
+    apple: "/favicon/apple-touch-icon.png",
+  },
+  manifest: "/favicon/site.webmanifest",
+  themeColor: "#fefefe",
 };
 
 export default config;
