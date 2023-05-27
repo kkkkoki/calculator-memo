@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode, useEffect, useState } from "react";
 
 import { tv } from "tailwind-variants";
@@ -13,7 +15,7 @@ const layout = tv({
     root: "flex flex-col min-h-screen",
     container: "container",
     flex: "md:flex flex-1 items-stretch flex-row",
-    contents: "flex items-center justify-center my-16 flex-1",
+    contents: "flex items-center justify-center my-16 md:w-3/5",
   },
 
   variants: {

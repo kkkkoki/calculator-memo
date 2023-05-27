@@ -7,7 +7,7 @@ import { tv } from "tailwind-variants";
 import { type FormValues } from "../base/SideNav";
 
 const input = tv({
-  base: "p-2 rounded-lg text-2xl text-right shadow-sm outline-none outline-2 caret-orange-8 focus:outline-orange-10",
+  base: "w-full p-2 rounded-lg text-2xl text-right shadow-sm outline-none outline-2 caret-orange-8 focus:outline-orange-10",
 });
 
 const CalcInput: FC<{ index: number }> = ({ index }) => {

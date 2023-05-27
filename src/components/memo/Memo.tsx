@@ -11,8 +11,8 @@ import MemoLabel from "./MemoLabel";
 
 const memo = tv({
   slots: {
-    root: "flex flex-col gap-1",
-    inputDeleteWrap: "flex items-center gap-2",
+    root: "w-full flex flex-col gap-1",
+    inputDeleteWrap: "w-full flex items-center gap-2",
     deleteBtn: "w-10 h-10 p-1 rounded-full hover:scale-110 transition-transform duration-300",
   },
 });
