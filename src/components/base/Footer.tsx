@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 
 import { useTheme } from "next-themes";
@@ -30,19 +30,10 @@ const SOCIAL_LINKS = [
 
 const Footer = () => {
   const { root, logo, links, sosialLink, sosialImage, copyLight } = footer();
-  const [mounted, setMounted] = useState(false);
   const { theme } = useTheme();
   const isDark = theme === "dark";
   const startYear = 2023;
   const year = new Date().getFullYear();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <footer className={root()}>

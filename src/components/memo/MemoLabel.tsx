@@ -9,7 +9,7 @@ import { FormValues } from "../base/SideNav";
 
 const memoLabel = tv({
   slots: {
-    root: "h-8 flex flex-row items-center gap-5",
+    root: "h-8 w-full flex flex-row items-center gap-5",
     formWrap: "flex flex-col gap-1",
     error: "text-red-400",
     input: "p-1 rounded-lg text-sm shadow-sm outline-none outline-1 caret-orange-8 focus:outline-orange-10",
