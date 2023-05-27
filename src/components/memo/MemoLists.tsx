@@ -9,7 +9,7 @@ import Memo from "./Memo";
 
 const list = tv({
   slots: {
-    root: "flex flex-col gap-2",
+    root: "w-full flex flex-col items-center gap-2",
     addBtn:
       "md:absolute ml-auto w-10 h-10 p-1 bottom-0 right-4 rounded-full hover:scale-110 transition-transform duration-300",
   },
