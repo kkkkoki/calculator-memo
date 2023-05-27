@@ -9,11 +9,6 @@ const config: Metadata = {
   openGraph: {
     title: siteConfig.siteName,
     description: siteConfig.description,
-    images: [
-      {
-        url: `${siteConfig.origin}/seo/ogp.png`,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
