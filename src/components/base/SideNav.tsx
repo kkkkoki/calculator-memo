@@ -17,7 +17,8 @@ type SideNavProps = {
 
 const sideNav = tv({
   slots: {
-    root: "relative md:w-[400px] flex items-center justify-center flex-col gap-2 border-solid border-x-white",
+    root: "relative md:w-2/5 flex items-center justify-center flex-col px-6 lg:px-8 gap-2 border-solid border-x-white",
+    form: "w-full",
   },
 
   variants: {
@@ -33,7 +34,7 @@ const sideNav = tv({
 });
 
 const SideNav: FC<SideNavProps> = ({ sideNavVariants }) => {
-  const { root } = sideNav({
+  const { root, form } = sideNav({
     root: sideNavVariants.root,
   });
   const methods = useForm<FormValues>();
@@ -51,7 +52,7 @@ const SideNav: FC<SideNavProps> = ({ sideNavVariants }) => {
 
   return (
     <div className={root()}>
-      <form onSubmit={methods.handleSubmit(onSubmit)}>
+      <form className={form()} onSubmit={methods.handleSubmit(onSubmit)}>
         <FormProvider {...methods}>
           <MemoLists />
         </FormProvider>
