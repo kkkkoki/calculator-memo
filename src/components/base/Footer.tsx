@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import Image from "next/image";
 
 import { useTheme } from "next-themes";
@@ -28,7 +28,7 @@ const SOCIAL_LINKS = [
   },
 ];
 
-const Footer = () => {
+const Footer: FC = () => {
   const { root, logo, links, sosialLink, sosialImage, copyLight } = footer();
   const { theme } = useTheme();
   const isDark = theme === "dark";
